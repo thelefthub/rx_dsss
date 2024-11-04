@@ -1,0 +1,10 @@
+## Todo: create useful gitignore for VHDL, Modelsim and Xilinx
+
+# Ignore Modelsim files
+*.mti
+*.mpf
+*.wlf
+*.bak
+
+# Ignore Modelsim work folder
+work/
