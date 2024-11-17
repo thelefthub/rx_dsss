@@ -1,0 +1,67 @@
+# reading /home/piet/intelFPGA/20.1/modelsim_ase/linuxaloem/../modelsim.ini
+# Loading project rx_dsss
+# Compile of rx_counter.vhd was successful.
+# Compile of rx_counter_tb.vhd was successful.
+vsim work.counter_tb
+# vsim work.counter_tb 
+# Start time: 15:28:38 on Nov 12,2024
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading ieee.std_logic_arith(body)
+# Loading ieee.std_logic_unsigned(body)
+# Loading work.counter_tb(structural)
+# Loading work.counter(behav)
+add wave -position insertpoint sim:/counter_tb/*
+run -all
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ps  Iteration: 0  Instance: /counter_tb/uut
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 100 ns  Iteration: 2  Instance: /counter_tb/uut
+# Compile of rx_counter.vhd was successful.
+restart -f
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.counter(behav)
+run -all
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ps  Iteration: 0  Instance: /counter_tb/uut
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 100 ns  Iteration: 2  Instance: /counter_tb/uut
+# Compile of rx_counter.vhd was successful.
+vsim work.counter_tb
+# End time: 15:50:58 on Nov 12,2024, Elapsed time: 0:22:20
+# Errors: 0, Warnings: 4
+# vsim work.counter_tb 
+# Start time: 15:50:58 on Nov 12,2024
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading ieee.std_logic_arith(body)
+# Loading ieee.std_logic_unsigned(body)
+# Loading work.counter_tb(structural)
+# Loading work.counter(behav)
+add wave -position insertpoint sim:/counter_tb/*
+run -all
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ps  Iteration: 0  Instance: /counter_tb/uut
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 100 ns  Iteration: 2  Instance: /counter_tb/uut
+# Compile of rx_counter_tb.vhd was successful.
+restart -f
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.counter_tb(structural)
+run -all
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ps  Iteration: 0  Instance: /counter_tb/uut
+# Compile of rx_counter_tb.vhd was successful.
+restart -f
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.counter_tb(structural)
+run -all
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ps  Iteration: 0  Instance: /counter_tb/uut
+# Compile of rx_counter_tb.vhd was successful.
+# End time: 17:40:49 on Nov 12,2024, Elapsed time: 1:49:51
+# Errors: 0, Warnings: 4
