@@ -102,7 +102,7 @@ rx_nco: nco PORT MAP(
     );
 
 
--- transition state detection machine and feed changes to segement decoder
+-- transition state detection machine and feed changes to segment decoder
 syn_state: process(clk)
 begin
     if rising_edge(clk) and clk_enable = '1' then
@@ -120,20 +120,20 @@ begin
     case pres_state is
         when LOW => -- present state is low, verify incoming spread
             extb_int <= '0';
-            if (sdi_spread = '1') then 
-            next_state <= L_2_H;
+            if sdi_spread = '1' then 
+                next_state <= L_2_H;
             else 	
-            next_state <= LOW;
+                next_state <= LOW;
             end if;	
         when L_2_H => -- sending out pulse signal for transition change
             extb_int <= '1';
             next_state <= HIGH;
         when HIGH => -- present state is high, verify incoming spread
             extb_int <= '0';
-            if (sdi_spread = '0') then
+            if sdi_spread = '0' then
                 next_state <= H_2_L;
             else	
-            next_state <= HIGH;
+                next_state <= HIGH;
             end if;
         when H_2_L => -- sending out pulse signal for transition change
             extb_int <= '1';
