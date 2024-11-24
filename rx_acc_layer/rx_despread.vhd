@@ -28,11 +28,11 @@ begin
     if rising_edge(clk) and clk_enable = '1' then
         if rst = '1' then
             pres_state <= '0';
-            else
-            if chip_sample = '1' then -- only react on chip samples
-                pres_state <= next_state;
-            -- else
-            end if;
+        else
+        if chip_sample = '1' then -- only react on chip samples
+            pres_state <= next_state;
+        -- else
+        end if;
         end if;
     end if;
 end process syn_despread;
