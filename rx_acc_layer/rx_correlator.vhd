@@ -25,7 +25,7 @@ signal msb: std_logic;
 
 begin
     -- test_count <= pres_count;
-
+databit <= msb;
 
 syn_count: process(clk)
 begin
@@ -64,12 +64,12 @@ begin
 end process com_msb;
 
 --delay count out (databit) - needed?
-com_delay: process(clk)
-begin
-    if rising_edge(clk) and clk_enable = '1' then
-        databit <= msb;
-    end if;
-end process com_delay;
+-- syn_delay: process(clk)
+-- begin
+--     if rising_edge(clk) and clk_enable = '1' then
+--         databit <= msb;
+--     end if;
+-- end process syn_delay;
     
 end behav;
     

@@ -25,7 +25,7 @@ begin
             when "01" => result <= i2;
             when "10" => result <= i3;
             when "11" => result <= i4;
-            when others => result <= '0';
+            when others => result <= '0'; --0 or 1 as default?
         end case;
     end process;
 end behav;
