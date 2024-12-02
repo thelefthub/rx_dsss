@@ -59,7 +59,7 @@ BEGIN
 	
     tb : PROCESS
     constant preamble: std_logic_vector(6 downto 0) := "0111110";
-    constant test_nimble: std_logic_vector(3 downto 0) := "1011";
+    constant test_nibble: std_logic_vector(3 downto 0) := "1011";
     
     BEGIN
     
@@ -79,7 +79,7 @@ BEGIN
             bit_sample	<= '0';
         end loop;
         for j in 3 downto 0 loop
-            databit	<= test_nimble(j);
+            databit	<= test_nibble(j);
             wait for period;
             bit_sample	<= '1';
             wait for period;
@@ -100,7 +100,7 @@ BEGIN
         bit_sample	<= '0';
     end loop;
     for j in 3 downto 0 loop
-        databit	<= test_nimble(j);
+        databit	<= test_nibble(j);
         wait for period;
         bit_sample	<= '1';
         wait for period;

@@ -145,7 +145,7 @@ begin
       rst => rst,
       clk_enable => clk_enable,
       seq_det => int_seq_det,
-      chip_sample => int_chip_sample1,--int_chip_sample,
+      chip_sample => int_chip_sample1 ,--int_chip_sample1, 
       bit_sample => int_bit_sample,
       pn_ml1 => int_pn_ml1,
       pn_ml2 => int_pn_ml2,

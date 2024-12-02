@@ -25,7 +25,7 @@ signal msb: std_logic;
 
 begin
     -- test_count <= pres_count;
-databit <= msb;
+databit <= msb; --sync purposes
 
 syn_count: process(clk)
 begin

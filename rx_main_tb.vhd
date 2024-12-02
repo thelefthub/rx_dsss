@@ -1,46 +1,44 @@
--- test bench for data layer
+-- test bench for main application
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 use ieee.std_logic_unsigned.all;
 
-entity access_layer_tb is
-end access_layer_tb;
+entity main_tb is
+end main_tb;
 
-architecture structural of access_layer_tb is
-    
-component access_layer is
+architecture structural of main_tb is
+
+component main is
     port (
         clk, rst: in std_logic;
         clk_enable: in std_logic;
         sdi_spread: in std_logic;
         dip_sw: in std_logic_vector(1 downto 0);
-        bit_sample: out std_logic;
-        databit: out std_logic
-     );
-end component access_layer;
+        seg_display: out std_logic_vector(7 downto 0)  
+        
+        );
+end component main;
 
-for uut : access_layer use entity work.access_layer(behav);
+for uut : main use entity work.main(behav);
 
 constant period : time := 100 ns;
 
--- constant delay  : time :=  10 ns;
+constant delay  : time :=  10 ns;
 signal end_of_sim : boolean := false;
-
-signal clk, rst:  std_logic;
--- signal clk_enable:  std_logic;
-signal sdi_spread, bit_sample, databit:  std_logic;
+signal clk, rst: std_logic;
+signal sdi_spread: std_logic;
+signal seg_display: std_logic_vector(7 downto 0);
 signal dip_sw: std_logic_vector(1 downto 0);
 
 BEGIN
-    uut: access_layer PORT MAP(
+    uut: main PORT MAP(
       clk => clk,
       rst => rst,
       clk_enable => '1',
       sdi_spread => sdi_spread,
-      dip_sw => dip_sw,
-      bit_sample => bit_sample,
-      databit => databit
+      seg_display => seg_display,
+      dip_sw => dip_sw      
       );
 
 	clock : process
@@ -57,11 +55,11 @@ BEGIN
         end loop;
         wait;
     end process clock;
-
+	
     tb : PROCESS
     constant seq_delay: integer := 496;
     constant preamble: std_logic_vector(6 downto 0) := "0111110";
-    constant test_nibble: std_logic_vector(3 downto 0) := "1011";
+    constant test_nibble: std_logic_vector(3 downto 0) := "1011"; --1011 1111 1001
     variable pn_ml1: std_logic_vector(30 downto 0) := "0100001010111011000111110011010";
     variable pn_ml2: std_logic_vector(30 downto 0) := "1110000110101001000101111101100";
     variable pn_gold: std_logic_vector(30 downto 0) := pn_ml1 xor pn_ml2;
@@ -69,11 +67,11 @@ BEGIN
     BEGIN
     
     --normal sequence
-    rst <= '0';
+    rst <= not '0';
     sdi_spread <= '0'; 
 
     -- dip selection unencrypted
-    dip_sw <= "00";
+    dip_sw <= not "00";
     for i in 6 downto 0 loop
         sdi_spread	<= preamble(i);
         wait for period * seq_delay;
@@ -84,7 +82,7 @@ BEGIN
     end loop;
     
     -- dip selection at pn_ml1 (encrypted):exepected output is a specific repeating pattern (cf. variables)
-    dip_sw <= "01";
+    dip_sw <= not "01";
     -- preamble
     for i in 30 downto 0 loop
         sdi_spread	<= pn_ml1(i); --0
@@ -116,7 +114,7 @@ BEGIN
     end loop;
 
     -- dip selection at pn_ml2 (encrypted):exepected output is a specific repeating pattern (cf. variables)
-    dip_sw <= "10";
+    dip_sw <= not "10";
     -- preamble
     for i in 30 downto 0 loop
         sdi_spread	<= pn_ml2(i); --0
@@ -148,7 +146,7 @@ BEGIN
     end loop;
 
     -- dip selection at pn_gold (encrypted):exepected output is a specific repeating pattern (cf. variables)
-    dip_sw <= "11";
+    dip_sw <= not "11";
     -- preamble
     for i in 30 downto 0 loop
         sdi_spread	<= pn_gold(i); --0
@@ -180,13 +178,21 @@ BEGIN
     end loop;
     
     -- reset
-    rst <='1';
+    rst <= not '1';
     wait for period*10;
-    rst <='0';
+    rst <= not '0';
     wait for period*496;
 
     -- dip selection unencrypted
-    dip_sw <= "00";
+    dip_sw <= not "00";
+    for i in 6 downto 0 loop
+        sdi_spread	<= preamble(i);
+        wait for period * seq_delay;
+    end loop;
+    for i in 3 downto 0 loop
+        sdi_spread	<= test_nibble(i);
+        wait for period * seq_delay;
+    end loop;
     for i in 6 downto 0 loop
         sdi_spread	<= preamble(i);
         wait for period * seq_delay;
@@ -199,5 +205,6 @@ BEGIN
     end_of_sim <= true;
     wait;
     END PROCESS;
+
 
 END;

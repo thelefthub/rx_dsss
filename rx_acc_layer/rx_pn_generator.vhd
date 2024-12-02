@@ -41,7 +41,7 @@ signal bit_sample_int: std_logic;
 begin
 
 -- signals out
-bit_sample <= bit_sample_int; --needed for sync?
+-- bit_sample <= bit_sample_int; --needed for sync?
 pn_ml1   <= pres_shift_1(0);
 pn_ml2   <= pres_shift_2(0);
 pn_gold  <= pres_shift_1(0) xor pres_shift_2(0);
@@ -91,16 +91,16 @@ begin
 end process com_shift;
 
 -- delay for sync - needed???
--- syn_delay: Process(clk)
--- begin
--- if rising_edge(clk) and clk_enable ='1' then
--- 	if chip_sample = '1' then
--- 		bit_sample <= bit_sample_int;
--- 	else
--- 		bit_sample <= '0';
--- 	end if;
--- else
--- end if;
--- end process syn_delay;
+syn_delay: Process(clk)
+begin
+if rising_edge(clk) and clk_enable ='1' then
+	if chip_sample = '1' then
+		bit_sample <= bit_sample_int;
+	else
+		bit_sample <= '0';
+	end if;
+else
+end if;
+end process syn_delay;
     
 end behav;
