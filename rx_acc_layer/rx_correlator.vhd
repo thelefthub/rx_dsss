@@ -63,13 +63,5 @@ begin
     end if;
 end process com_msb;
 
---delay count out (databit) - needed?
--- syn_delay: process(clk)
--- begin
---     if rising_edge(clk) and clk_enable = '1' then
---         databit <= msb;
---     end if;
--- end process syn_delay;
-    
 end behav;
     

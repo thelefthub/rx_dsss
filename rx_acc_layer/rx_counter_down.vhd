@@ -36,10 +36,10 @@ end process syn_count;
 
 com_count: process(pres_count, decoded) 
 begin
-    if (pres_count = "00000") then
+    if pres_count = "00000" then
         sample_out	<= '0';
         next_count	<= decoded; -- load new counter code
-    elsif (pres_count = "00001") then
+    elsif pres_count = "00001" then
         sample_out	<= '1'; -- take into account delay between semaphore and NCO: send at 1 instead of 0
         next_count 	<= pres_count - "00001";
     else

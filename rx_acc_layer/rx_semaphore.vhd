@@ -43,9 +43,9 @@ begin
     -- state machine for chip handling
     case pres_state is
         when IDLE => -- waiting for state transition
-            if (extb = '1') then -- always react on 
+            if extb = '1' then -- always react on 
             next_state <= IN_TRANS;
-            elsif (extb = '0') and (chip_sample = '1') then --if sample received but no transition detected
+            elsif extb = '0' and chip_sample = '1' then --if sample received but no transition detected
             -- elsif (chip_sample = '1') then --if sample received but no transition detected
             next_state <= NO_TRANS;
             else 	
@@ -53,7 +53,7 @@ begin
             end if;
             -- seg_out <= c;--default;?	
         when IN_TRANS => -- transition was detected
-            if (chip_sample = '1') then 
+            if chip_sample = '1' then 
             next_state <= PUSH_OUT; --if in transition but sample received, send sample out
             else 	
             next_state <= IN_TRANS;
