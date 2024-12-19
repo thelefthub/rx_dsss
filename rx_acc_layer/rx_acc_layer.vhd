@@ -180,7 +180,7 @@ begin
     );
 
     rx_acc_mux_i42: mux_i42 PORT MAP(
-      i1 => '0',               
+      i1 => '0', -- not really used           
       i2 => int_pn_ml1,
       i3 => int_pn_ml2,
       i4 => int_pn_gold,

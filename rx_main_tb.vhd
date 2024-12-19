@@ -80,7 +80,7 @@ BEGIN
         sdi_spread	<= test_nibble(i);
         wait for period * seq_delay;
     end loop;
-    
+
     -- dip selection at pn_ml1 (encrypted):exepected output is a specific repeating pattern (cf. variables)
     dip_sw <= not "01";
     -- preamble
